@@ -23,12 +23,12 @@ export default async function handler(req, res) {
       summary.areas[a] = { found: listings.length, new: 0, alerted: 0, errors }
 
       for (const listing of listings) {
-        if (!listing.external_id) continue
+  if (listing.external_id === undefined) continue
         const { data: saved, error } = await supabaseAdmin
           .from('listings')
           .upsert(listing, { onConflict: 'source,external_id', ignoreDuplicates: false })
           .select().single()
-        if (error) continue
+      if (error) { console.error('Upsert error:', error.message, listing.external_id); continue }
         if (!saved.alerted) {
           summary.areas[a].new++
           const budget = BUDGET[a]
