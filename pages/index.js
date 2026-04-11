@@ -71,26 +71,36 @@ export default function Home() {
         <div style={{ display: 'grid', gap: 16 }}>
           {listings.map(l => (
             <div key={l.id} style={{ border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden', background: l.starred ? '#fffbeb' : '#fff' }}>
- {l.thumbnail && (
-  <img src={`/api/image-proxy?url=${encodeURIComponent(l.thumbnail)}`} alt={l.title} style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }} />
-)}
-  <div style={{ padding: 20, display: 'flex', gap: 16 }}>
-    <div style={{ flex: 1 }}>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
-        <span style={{ fontSize: 11, fontWeight: 600, background: { airbnb: '#ff385c', vrbo: '#3D6EF6', craigslist: '#7c3aed', zillow: '#006aff' }[l.source] || '#999', color: '#fff', padding: '2px 8px', borderRadius: 4, textTransform: 'uppercase' }}>{l.source}</span>
-        <span style={{ fontSize: 11, color: '#999', textTransform: 'capitalize' }}>{l.area}</span>
-        {l.alerted && <span style={{ fontSize: 11, color: '#16a34a' }}>Alerted</span>}
-      </div>
-      <h3 style={{ margin: '0 0 4px', fontSize: 16, fontWeight: 600 }}>
-        <a href={l.url} target="_blank" rel="noopener noreferrer" style={{ color: '#111', textDecoration: 'none' }}>{l.title || 'Untitled listing'}</a>
-      </h3>
-      <div style={{ fontSize: 13, color: '#666', marginBottom: 8 }}>
-        {[l.bedrooms && `${l.bedrooms} bed`, l.bathrooms && `${l.bathrooms} bath`, l.city].filter(Boolean).join(' · ')}
-      </div>
-      <div style={{ fontSize: 20, fontWeight: 700 }}>{l.price_per_month ? `$${l.price_per_month.toLocaleString()}/mo` : l.price_raw || 'Price TBC'}</div>
+              {l.thumbnail && (
+                <img
+                  src={`/api/image-proxy?url=${encodeURIComponent(l.thumbnail)}`}
+                  alt={l.title}
+                  style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
+                />
+              )}
+              <div style={{ padding: 20, display: 'flex', gap: 16 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
+                    <span style={{ fontSize: 11, fontWeight: 600, background: { airbnb: '#ff385c', vrbo: '#3D6EF6', craigslist: '#7c3aed', zillow: '#006aff' }[l.source] || '#999', color: '#fff', padding: '2px 8px', borderRadius: 4, textTransform: 'uppercase' }}>{l.source}</span>
+                    <span style={{ fontSize: 11, color: '#999', textTransform: 'capitalize' }}>{l.area}</span>
+                    {l.alerted && <span style={{ fontSize: 11, color: '#16a34a' }}>Alerted</span>}
+                  </div>
+                  <h3 style={{ margin: '0 0 4px', fontSize: 16, fontWeight: 600 }}>
+                    <a href={l.url} target="_blank" rel="noopener noreferrer" style={{ color: '#111', textDecoration: 'none' }}>{l.title || 'Untitled listing'}</a>
+                  </h3>
+                  <div style={{ fontSize: 13, color: '#666', marginBottom: 8 }}>
+                    {[l.bedrooms && `${l.bedrooms} bed`, l.bathrooms && `${l.bathrooms} bath`, l.city].filter(Boolean).join(' · ')}
+                  </div>
+                  <div style={{ fontSize: 20, fontWeight: 700 }}>{l.price_per_month ? `$${l.price_per_month.toLocaleString()}/mo` : l.price_raw || 'Price TBC'}</div>
+                </div>
+                <button onClick={() => toggleStar(l.id, l.starred)} style={{ background: 'none', border: 'none', fontSize: 22, cursor: 'pointer' }}>
+                  {l.starred ? '⭐' : '☆'}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-    <button onClick={() => toggleStar(l.id, l.starred)} style={{ background: 'none', border: 'none', fontSize: 22, cursor: 'pointer' }}>
-      {l.starred ? '⭐' : '☆'}
-    </button>
-  </div>
-</div>
+  )
+}
