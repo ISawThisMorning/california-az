@@ -72,7 +72,7 @@ export default function Home() {
           {listings.map(l => (
             <div key={l.id} style={{ border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden', background: l.starred ? '#fffbeb' : '#fff' }}>
   {l.thumbnail && (
-   <img src={l.thumbnail} alt={l.title} referrerPolicy="no-referrer" style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }} /> referrerPolicy="no-referrer"
+<img src={l.thumbnail} alt={l.title} referrerPolicy="no-referrer" style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }} />
   )}
   <div style={{ padding: 20, display: 'flex', gap: 16 }}>
     <div style={{ flex: 1 }}>
