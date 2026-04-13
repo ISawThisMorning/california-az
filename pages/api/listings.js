@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     query = query
       .gte('price_per_month', 5000)
       .lte('price_per_month', 8500)
-      .limit(20)
+      .limit(75)
   }
 
   const { data, error } = await query
