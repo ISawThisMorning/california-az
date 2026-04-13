@@ -88,14 +88,17 @@ export default function Home() {
     ) : (
       <div style={{ width: '50%', height: '100%', background: '#f3f4f6', flexShrink: 0 }} />
     )}
-    <iframe
-      width="50%"
-      height="100%"
-      frameBorder="0"
-      scrolling="no"
-      src={`https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(`${(l.longitude||0)-0.01},${(l.latitude||0)-0.01},${(l.longitude||0)+0.01},${(l.latitude||0)+0.01}`)}&layer=mapnik&marker=${l.latitude||0},${l.longitude||0}`}
-      style={{ display: 'block', flexShrink: 0 }}
-    />
+  {l.latitude && l.longitude ? (
+  <img
+    src={`https://static-maps.yandex.ru/1.x/?lang=en_US&ll=${l.longitude},${l.latitude}&z=15&l=map&size=450,220&pt=${l.longitude},${l.latitude},pm2rdm`}
+    width="50%"
+    height="100%"
+    style={{ display: 'block', flexShrink: 0, objectFit: 'cover' }}
+    alt="map"
+  />
+) : (
+  <div style={{ width: '50%', height: '100%', background: '#f3f4f6', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ccc', fontSize: 13 }}>No map</div>
+)}
   </div>
               <div style={{ padding: 20, display: 'flex', gap: 16 }}>
                 <div style={{ flex: 1 }}>
