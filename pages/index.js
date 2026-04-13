@@ -77,14 +77,26 @@ export default function Home() {
       ) : (
         <div style={{ display: 'grid', gap: 16 }}>
           {listings.map(l => (
-            <div key={l.id} style={{ border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden', background: l.starred ? '#fffbeb' : '#fff' }}>
-              {l.thumbnail && (
-                <img
-                  src={`/api/image-proxy?url=${encodeURIComponent(l.thumbnail)}`}
-                  alt={l.title}
-                  style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
-                />
-              )}
+          <div key={l.id} style={{ border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden', background: l.starred ? '#fffbeb' : '#fff' }}>
+  <div style={{ display: 'flex', height: 220 }}>
+    {l.thumbnail ? (
+      <img
+        src={`/api/image-proxy?url=${encodeURIComponent(l.thumbnail)}`}
+        alt={l.title}
+        style={{ width: '50%', height: '100%', objectFit: 'cover', display: 'block', flexShrink: 0 }}
+      />
+    ) : (
+      <div style={{ width: '50%', height: '100%', background: '#f3f4f6', flexShrink: 0 }} />
+    )}
+    <iframe
+      width="50%"
+      height="100%"
+      frameBorder="0"
+      scrolling="no"
+      src={`https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(`${(l.longitude||0)-0.01},${(l.latitude||0)-0.01},${(l.longitude||0)+0.01},${(l.latitude||0)+0.01}`)}&layer=mapnik&marker=${l.latitude||0},${l.longitude||0}`}
+      style={{ display: 'block', flexShrink: 0 }}
+    />
+  </div>
               <div style={{ padding: 20, display: 'flex', gap: 16 }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
