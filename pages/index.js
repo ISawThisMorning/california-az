@@ -41,7 +41,14 @@ export default function Home() {
     <div style={{ fontFamily: 'system-ui, sans-serif', maxWidth: 900, margin: '0 auto', padding: '24px 16px' }}>
       <div style={{ marginBottom: 32 }}>
         <h1 style={{ fontSize: 28, fontWeight: 700, margin: 0 }}>California A-Z</h1>
-        <p style={{ color: '#666', marginTop: 4 }}>The A-Z for tasteful nomads · Move-in May 29</p>
+<div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4 }}>
+  <span style={{ color: '#666' }}>The A-Z for tasteful nomads · Move-in from</span>
+  <input
+    type="date"
+    defaultValue="2026-05-30"
+    style={{ border: 'none', borderBottom: '1px solid #ccc', color: '#666', fontSize: 14, fontFamily: 'system-ui, sans-serif', background: 'transparent', cursor: 'pointer' }}
+  />
+</div>
       </div>
       <div style={{ display: 'flex', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', gap: 8 }}>
