@@ -45,7 +45,7 @@ export default function Home() {
       </div>
       <div style={{ display: 'flex', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', gap: 8 }}>
-          {['all', 'tahoma', 'venice'].map(a => (
+   {['all', 'tahoma', 'venice', 'marina'].map(a => (
             <button key={a} onClick={() => setArea(a)} style={{ padding: '8px 16px', borderRadius: 8, border: 'none', background: area === a ? '#111' : '#eee', color: area === a ? '#fff' : '#333', cursor: 'pointer', fontWeight: 500 }}>
               {a === 'all' ? 'All' : `${a.charAt(0).toUpperCase() + a.slice(1)} · ${BUDGETS[a]}`}
             </button>
