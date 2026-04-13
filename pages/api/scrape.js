@@ -3,7 +3,6 @@ import { alertListing } from '../../lib/alerts'
 import { supabaseAdmin } from '../../lib/supabase'
 
 const BUDGET = {
-const BUDGET = {
   tahoma: { min: 3000, max: 5500 },
   venice: { min: 5000, max: 8500 },
   marina: { min: 5000, max: 8500 },
