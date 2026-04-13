@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const BUDGETS = { tahoma: '$5,000–5,500/mo', venice: '$5,000–8,500/mo', marina: '$5,000–8,500/mo' }
+const BUDGETS = { tahoma: '$3,000–6,000/mo', venice: '$5,000–8,500/mo', marina: '$5,000–8,500/mo' }
 
 export default function Home() {
   const [listings, setListings] = useState([])
@@ -91,7 +91,9 @@ export default function Home() {
                   <div style={{ fontSize: 13, color: '#666', marginBottom: 8 }}>
                     {[l.bedrooms && `${l.bedrooms} bed`, l.bathrooms && `${l.bathrooms} bath`, l.city].filter(Boolean).join(' · ')}
                   </div>
-                  <div style={{ fontSize: 20, fontWeight: 700 }}>{l.price_per_month ? `$${l.price_per_month.toLocaleString()}/mo` : l.price_raw || 'Price TBC'}</div>
+              {(l.price_per_month || l.price_raw) && (
+  <div style={{ fontSize: 20, fontWeight: 700 }}>{l.price_per_month ? `$${l.price_per_month.toLocaleString()}/mo` : l.price_raw}</div>
+)}
                 </div>
                 <button onClick={() => toggleStar(l.id, l.starred)} style={{ background: 'none', border: 'none', fontSize: 22, cursor: 'pointer' }}>
                   {l.starred ? '⭐' : '☆'}
