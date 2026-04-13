@@ -4,7 +4,7 @@ import { supabaseAdmin } from '../../lib/supabase'
 
 const BUDGET = {
   tahoma: { min: 3000, max: 5500 },
-  venice: { min: 4000, max: 6500 },
+venice: { min: 5000, max: 8500 },
 }
 
 export default async function handler(req, res) {
