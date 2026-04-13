@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const BUDGETS = { tahoma: '$5,000–5,500/mo', venice: '$6,000–6,500/mo' }
+const BUDGETS = { tahoma: '$3,000–6,000/mo', venice: '$5,000–8,500/mo' }
 
 export default function Home() {
   const [listings, setListings] = useState([])
